@@ -42,11 +42,14 @@ static const char *const autostart[] = {
     "sh", "-c", "feh --randomize --bg-fill ~/Pictures/Wallpapers/*", NULL,
     "/opt/Synergy/synergy-service", NULL,
     "slstatus", NULL,
+    "sh", "-c", "xinput --set-prop 8 'libinput Accel Speed' -0.8", NULL,
+    "sh", "-c", "xinput set-prop 'DELL0AB0:00 04F3:3147 Touchpad' 'libinput Tapping Enabled' 1", NULL,
+    "sh", "-c", "xinput --set-prop 'DELL0AB0:00 04F3:3147 Touchpad' 'libinput Natural Scrolling Enabled' 1", NULL,
     NULL /* terminate */
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "󰊖", "", "" };
+static const char *tags[] = { "", "", "󰊖", "", "" };
 
 static const char ptagf[] = "[%s %s]";  /* format of a tag label */
 static const char etagf[] = "[%s]";     /* format of an empty tag */
@@ -102,7 +105,7 @@ static Key keys[] = {
     { MODKEY,                       XK_p,                      spawn,          SHCMD ("flameshot full -p /media/drive/Screenshots/")},
     { MODKEY|ShiftMask,             XK_p,                      spawn,          SHCMD ("flameshot gui -p /media/drive/Screenshots/")},
     { MODKEY|ControlMask,           XK_p,                      spawn,          SHCMD ("flameshot gui --clipboard")},
-    { MODKEY,                       XK_e,                      spawn,          SHCMD ("xdg-open .")},
+    { MODKEY,                       XK_e,                      spawn,          SHCMD ("thunar")},
     { MODKEY,                       XK_w,                      spawn,          SHCMD ("looking-glass-client -F")},
     { MODKEY|ShiftMask,             XK_w,                      spawn,          SHCMD ("feh --randomize --bg-fill ~/Pictures/backgrounds/*")},
     { 0,                            XF86XK_MonBrightnessUp,    spawn,          SHCMD ("xbacklight -inc 10")},

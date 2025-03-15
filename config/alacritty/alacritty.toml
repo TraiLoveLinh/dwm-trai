@@ -34,7 +34,7 @@ TERM = "xterm-256color"
 #glyph_offset = { x = 1, y = 0 }
 normal.family = "JetBrainsMonoNL NF"
 normal.style = "Regular"
-size = 12.0
+size = 10.0
 
 [font.bold]
 family = "JetBrainsMonoNL NF"
