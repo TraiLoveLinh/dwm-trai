@@ -45,11 +45,12 @@ static const char *const autostart[] = {
     "sh", "-c", "xinput --set-prop 8 'libinput Accel Speed' -0.8", NULL,
     "sh", "-c", "xinput set-prop 'DELL0AB0:00 04F3:3147 Touchpad' 'libinput Tapping Enabled' 1", NULL,
     "sh", "-c", "xinput --set-prop 'DELL0AB0:00 04F3:3147 Touchpad' 'libinput Natural Scrolling Enabled' 1", NULL,
+	"sh", "-c", "ibus-daemon", NULL,
     NULL /* terminate */
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "󰊖", "", "" };
+static const char *tags[] = { "", "", "󱋊", "󰊖", "", "" };
 
 static const char ptagf[] = "[%s %s]";  /* format of a tag label */
 static const char etagf[] = "[%s]";     /* format of an empty tag */
@@ -65,6 +66,7 @@ static const Rule rules[] = {
     { "lutris",             NULL,     NULL,           0,         1,          0,          0,         0 },
     { "steam_app_default",  NULL,     NULL,           0,         1,          0,          0,         0 },
     { "thunar",             NULL,     NULL,           0,         1,          0,          0,         0 },
+    { "chrome",      NULL,     NULL,           1 << 1,    0,          0,          0,         -1 },
     { NULL,                 NULL,     "Event Tester", 0,         0,          0,          1,        -1 }, /* xev */
 };
 
@@ -101,7 +103,7 @@ static Key keys[] = {
     { MODKEY,                       XK_r,                      spawn,          {.v = launchercmd} },
     { MODKEY|ControlMask,           XK_r,                      spawn,          SHCMD ("protonrestart")},
     { MODKEY,                       XK_x,                      spawn,          {.v = termcmd } },
-    { MODKEY,                       XK_b,                      spawn,          SHCMD ("xdg-open https://")},
+    { MODKEY,                       XK_b,                      spawn,          SHCMD ("google-chrome-stable & sleep 0.5 && xdotool key super+2")},
     { MODKEY,                       XK_p,                      spawn,          SHCMD ("flameshot full -p /media/drive/Screenshots/")},
     { MODKEY|ShiftMask,             XK_p,                      spawn,          SHCMD ("flameshot gui -p /media/drive/Screenshots/")},
     { MODKEY|ControlMask,           XK_p,                      spawn,          SHCMD ("flameshot gui --clipboard")},
@@ -144,6 +146,7 @@ static Key keys[] = {
     TAGKEYS(                        XK_3,                      2)
     TAGKEYS(                        XK_4,                      3)
     TAGKEYS(                        XK_5,                      4)
+    TAGKEYS(                        XK_6,                      5)
     { MODKEY|ShiftMask,             XK_q,                      quit,           {0} },
     { MODKEY|ControlMask,           XK_q,                      spawn,          SHCMD("$HOME/.config/rofi/powermenu.sh")},
     { MODKEY|ControlMask|ShiftMask, XK_r,                      spawn,          SHCMD("systemctl reboot")},
